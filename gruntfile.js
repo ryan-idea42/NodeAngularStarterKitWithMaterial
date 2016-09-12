@@ -7,7 +7,7 @@ module.exports = function (grunt) {
         },
 
         concat: {
-            js: { 
+            js: {
                 src: ['node_modules/angular/angular.js',
                     'node_modules/angular-route/angular-route.js',
                     'node_modules/angular-animate/angular-animate.js',
@@ -56,13 +56,18 @@ module.exports = function (grunt) {
                 script: 'server.js'
             }
         },
+        open: {
+            dev: {
+                path: 'http://localhost:8080'
+            }
+        },
         concurrent: {
             options: {
                 logConcurrentOutput: true
             },
-            tasks: ['nodemon', 'watch']
-        }
-
+            tasks: ['nodemon', 'watch', 'open']
+        },
+        
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -72,6 +77,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-concurrent');
 
     grunt.registerTask('default', ['sass', 'cssmin', 'jshint', 'concat', 'uglify', 'concurrent']);
