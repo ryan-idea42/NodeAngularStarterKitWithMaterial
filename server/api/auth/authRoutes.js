@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var controller = require('./authController');
 
-// router.route('/')
-//   .get(controller.get)
+//////////// POST ////////////
+router.route('/').post(controller.authenticate);
 
 module.exports = router;

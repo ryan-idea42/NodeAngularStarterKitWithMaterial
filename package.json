@@ -15,7 +15,8 @@
         "angular-animate": "*", 
         "mongoose": "*", 
         "lodash": "*", 
-        "bcrypt": "*"
+        "bcrypt": "*", 
+        "jsonwebtoken": "*"
     }, 
     "devDependencies": {
         "grunt": "*", 
