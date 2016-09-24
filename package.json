@@ -13,7 +13,9 @@
         "angular-aria": "*", 
         "angular-messages": "*", 
         "angular-animate": "*", 
-        "mongoose": "*"
+        "mongoose": "*", 
+        "lodash": "*", 
+        "bcrypt": "*"
     }, 
     "devDependencies": {
         "grunt": "*", 
