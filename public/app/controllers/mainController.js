@@ -1,18 +1,20 @@
 angular.module('angularSPA').controller('mainController', MainController);
 
-MainController.$inject = ['testDataService'];
-function MainController(testDataService){
+MainController.$inject = ['authService', '$cookies'];
+function MainController(authService, $cookies){
     var vm = this;
 
-    vm.currentTime = '';
+    vm.currentUserName = '';
 
     init();
 
     ////////////
 
     function init(){
-        testDataService.getTime().then(function(data){
-            vm.currentTime = data.data;
+        var token = $cookies.get('access-token');
+
+        authService.getUserInfo().then(function(success){
+            vm.currentUserName = success.data.userName;
         });
     }
 }

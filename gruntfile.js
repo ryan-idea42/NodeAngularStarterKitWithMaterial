@@ -9,12 +9,14 @@ module.exports = function (grunt) {
         concat: {
             js: {
                 src: ['node_modules/angular/angular.js',
+                    'node_modules/angular-cookies/angular-cookies.js',
                     'node_modules/angular-route/angular-route.js',
                     'node_modules/angular-animate/angular-animate.js',
                     'node_modules/angular-aria/angular-aria.js',
                     'node_modules/angular-messages/angular-messages.js',
                     'node_modules/angular-material/angular-material.js',
                     'public/angular-app.js',
+                    'public/angular-app-run.js',
                     'public/dal.js',
                     'public/app/**/*.js'],
                 dest: 'dist/js/code.js'
@@ -37,7 +39,8 @@ module.exports = function (grunt) {
         cssmin: {
             build: {
                 files: {
-                    'dist/style/site.min.css': 'dist/style/site.css'
+                    'dist/style/site.min.css': ['dist/style/site.css', 
+                                                'node_modules/angular-material/angular-material.css']
                 }
             }
         },

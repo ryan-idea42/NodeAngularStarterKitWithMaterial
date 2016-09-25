@@ -1,4 +1,4 @@
-angular.module('angularSPA', ['ngRoute', 'ngMaterial']);
+angular.module('angularSPA', ['ngRoute', 'ngMaterial', 'ngCookies']);
 
 AngularAppConfiguration.$inject = ['$routeProvider', '$locationProvider'];
 angular.module('angularSPA').config(AngularAppConfiguration);
@@ -8,12 +8,15 @@ function AngularAppConfiguration($routeProvider, $locationProvider) {
         .when('/', {
             templateUrl: '/app/views/main.html',
             controller: 'mainController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            authRequired: true, 
+            title: "Nodular Material"
         })
         .when('/login', {
             templateUrl: '/app/views/login.html',
             controller: 'loginController',
-            controllerAs: 'vm'
+            controllerAs: 'vm', 
+            title: "Log In"
         });
 
     //Remove the need for the '#' in the URL.

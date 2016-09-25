@@ -4,24 +4,24 @@ var app = require('express');
 var config = require('../config/config');
 
 router.use(function (req, res, next) {
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies['access-token'];
 
     if (token) {
         jwt.verify(token, config.secrets.jwt, function (err, userContext) {
             if (err) {
                 req.user = null;
-                req.isAuthroized = false;
+                req.isAuthorized = false;
                 next();
             } else {
                 req.user = userContext;
-                req.isAuthroized = true;
+                req.isAuthorized = true;
                 next();
             }
         });
 
     } else {
         req.user = null;
-        req.isAuthroized = false;
+        req.isAuthorized = false;
         next();
     }
 });
@@ -29,7 +29,6 @@ router.use(function (req, res, next) {
 //////////// CONFIGURE ROUTES ////////////
 
 router.use('/auth', require('./auth/authRoutes'));
-router.use('/test', require('./test/testRoutes'));
 router.use('/user', require('./user/userRoutes'));
 
 module.exports = router;

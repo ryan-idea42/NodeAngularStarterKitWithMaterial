@@ -1,18 +1,27 @@
-angular.module('angularSPA').controller('loginController', MainController);
+angular.module('angularSPA').controller('loginController', LoginController);
 
-MainController.$inject = ['testDataService'];
-function MainController(testDataService){
+LoginController.$inject = ['authService', '$mdToast'];
+function LoginController(authService, $mdToast){
     var vm = this;
 
-    vm.currentTime = '';
+    vm.userName = '';
+    vm.password = '';
+
+    vm.authenticate = _authenticate;
 
     init();
 
     ////////////
 
-    function init(){
-        testDataService.getTime().then(function(data){
-            vm.currentTime = data.data;
+    function _authenticate() {
+        authService.authenticate(vm.userName, vm.password).then(function(success){
+            $mdToast.showSimple('Authentication Success!');
+        }, function(error){
+            $mdToast.showSimple('Authentication Error!');
         });
+    }
+
+    function init(){
+        
     }
 }
