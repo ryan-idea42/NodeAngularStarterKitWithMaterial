@@ -11,7 +11,7 @@ function MainController(authService, $cookies){
     ////////////
 
     function init(){
-        var token = $cookies.get('access-token');
+       
 
         authService.getUserInfo().then(function(success){
             vm.currentUserName = success.data.userName;
