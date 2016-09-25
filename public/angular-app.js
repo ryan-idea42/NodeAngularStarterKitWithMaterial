@@ -9,6 +9,11 @@ function AngularAppConfiguration($routeProvider, $locationProvider) {
             templateUrl: '/app/views/main.html',
             controller: 'mainController',
             controllerAs: 'vm'
+        })
+        .when('/login', {
+            templateUrl: '/app/views/login.html',
+            controller: 'loginController',
+            controllerAs: 'vm'
         });
 
     //Remove the need for the '#' in the URL.
