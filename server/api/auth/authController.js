@@ -9,8 +9,7 @@ exports.authenticate = function (req, res) {
 
         if (foundUser.passwordValid(req.body.password)) {
             var token = jwt.sign(foundUser, config.secrets.jwt, { expiresIn: config.expireTime });
-
-            res.json({success: true, message: "Success!", token: token});
+            res.header('x-access-token' , token).json({success: true, message: "Success!"});
         }
     }, function (error) {
         res.json({ success: false, message: "No user found" })

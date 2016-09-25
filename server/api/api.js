@@ -9,19 +9,19 @@ router.use(function (req, res, next) {
     if (token) {
         jwt.verify(token, config.secrets.jwt, function (err, userContext) {
             if (err) {
-                req.userContext = null;
-                req.isAuthenticated = false;
+                req.user = null;
+                req.isAuthroized = false;
                 next();
             } else {
-                req.userContext = userContext;
-                req.isAuthenticated = true;
+                req.user = userContext;
+                req.isAuthroized = true;
                 next();
             }
         });
 
     } else {
-        req.userContext = null;
-        req.isAuthenticated = false;
+        req.user = null;
+        req.isAuthroized = false;
         next();
     }
 });

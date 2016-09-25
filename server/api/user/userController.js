@@ -1,19 +1,26 @@
 var userSchema = require('../../models/schemas/userSchema');
 var user = require('../../models/user');
+var common = require('../common');
 
-exports.getByName= function(req, res) {
-	userSchema.findOne({userName: req.params.userName}).exec(function(err, user){
+exports.getByName = function (req, res) {
+    if (!req.isAuthenticated)
+        return common.unauthorized(res);
+
+    userSchema.findOne({ userName: req.params.userName }).exec(function (err, user) {
         res.json(user);
     })
 }
 
-exports.createUser = function(req, res) {
+exports.createUser = function (req, res) {
+    if (!req.isAuthenticated)
+        common.unauthorized(res);
+
     var newUser = new user(req.body);
     newUser.hashPassword(req.body.password);
 
-    userSchema.create(newUser).then(function(success){
+    userSchema.create(newUser).then(function (success) {
         res.json(success.Id);
-    }, function(error){
+    }, function (error) {
         res.json(error);
     });
 }
