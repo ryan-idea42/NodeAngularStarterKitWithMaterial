@@ -10,15 +10,15 @@
         "cookie-parser": "*",
         "angular": "*", 
         "angular-route": "*",
-        "angular-material": "*", 
-        "angular-aria": "*", 
         "angular-messages": "*", 
         "angular-animate": "*", 
         "angular-cookies": "*",
         "mongoose": "*", 
         "lodash": "*", 
         "bcrypt": "*", 
-        "jsonwebtoken": "*"
+        "jsonwebtoken": "*", 
+        "bootstrap": "*", 
+        "jquery": "*"
     }, 
     "devDependencies": {
         "grunt": "*", 
