@@ -1,7 +1,7 @@
 angular.module('angularSPA').controller('loginController', LoginController);
 
-LoginController.$inject = ['authService', '$location'];
-function LoginController(authService, $location){
+LoginController.$inject = ['authService', '$mdToast'];
+function LoginController(authService, $mdToast){
     var vm = this;
 
     vm.userName = '';
@@ -15,9 +15,9 @@ function LoginController(authService, $location){
 
     function _authenticate() {
         authService.authenticate(vm.userName, vm.password).then(function(success){
-            $location.path('/');
+            $mdToast.showSimple('Authentication Success!');
         }, function(error){
-            
+            $mdToast.showSimple('Authentication Error!');
         });
     }
 

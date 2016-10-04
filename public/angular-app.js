@@ -1,4 +1,4 @@
-angular.module('angularSPA', ['ngRoute', 'ngCookies']);
+angular.module('angularSPA', ['ngRoute', 'ngMaterial', 'ngCookies']);
 
 AngularAppConfiguration.$inject = ['$routeProvider', '$locationProvider'];
 angular.module('angularSPA').config(AngularAppConfiguration);
