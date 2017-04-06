@@ -3,7 +3,7 @@
     "description": "A starter project for anyone wanting to build an Angular SPA app with Angular Material, using NodeJS",
     "author": "Ryan Ward",
     "version": "1.0.0",
-    "main": "server.js",
+    "main": "server/server.js",
     "dependencies": {
         "express": "*", 
         "body-parser": "*",
@@ -17,7 +17,7 @@
         "angular-cookies": "*",
         "mongoose": "*", 
         "lodash": "*", 
-        "bcrypt": "*", 
+        "bcrypt-nodejs": "*", 
         "jsonwebtoken": "*"
     }, 
     "devDependencies": {
